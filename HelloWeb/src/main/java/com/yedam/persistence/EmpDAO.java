@@ -134,4 +134,30 @@ public class EmpDAO {
 		return false;
 	}
 	
+	//사원 수정
+	public boolean modifyEmp(Employee emp) {
+		conn = DAO.getConnect();
+		String sql = "UPDATE employees SET first_name=?, last_name=?, email=? WHERE employee_id=?";
+		
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, emp.getFirstName());
+			psmt.setString(2, emp.getLastName());
+			psmt.setString(3, emp.getEmail());
+			psmt.setInt(4, emp.getEmployeeId());
+			
+			int r = psmt.executeUpdate();
+			if(r>0) {
+				return true;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return false;
+		
+	}
+	
 }

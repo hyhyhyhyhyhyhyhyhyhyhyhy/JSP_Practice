@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+</style>
+</head>
+<body>
+	<div id="container">
+	<form action="../addMemberServlet">
+	<fieldset>
+	<legend>사원 추가</legend>
+	이름 : <input name = "fname"><br> <!-- parameter의 이름 -->
+	 성 : <input name = "lname"><br>
+	이메일: <input name = "email"><br>
+	직업: <input name = "job"><br>
+	입사일: <input name = "hire"><br>
+	전화번호 <input name ="phone"> <br>
+	<input type ="submit" value = "저장">
+	</fieldset>
+	</form>
+	<br>
+	
+	<form action="../delMemberServlet">
+	<fieldset>
+	<legend>사원 삭제</legend>
+	삭제할 사원번호 <input name = "emp_id" >
+	<input type ="submit" value = "삭제">
+	</fieldset>
+	</form>
+	<br>
+	<form action="../searchMember">
+	<fieldset>
+	<legend>사원 조회</legend>
+	조회할 사원번호 <input name = "emp_id" >
+	<input type ="submit" value = "조회">
+	</fieldset>
+	</form>
+	</div>
+</body>
+</html>
