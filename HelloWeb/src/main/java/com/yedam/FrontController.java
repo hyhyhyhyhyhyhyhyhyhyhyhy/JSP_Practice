@@ -37,6 +37,10 @@ public class FrontController extends HttpServlet {
 		map.put("/deleteMember.do", new deleteMemberControl());
 		// 로그인 화면 (아이디/이메일 입력화면)
 		map.put("/loginForm.do", new LoginFormControl());
+		// 로그인 처리
+		map.put("/login.do", new LoginControl());
+		// 로그아웃 처리
+		map.put("/logout.do", new LogoutControl());
 	}
 	
 
@@ -50,7 +54,7 @@ public class FrontController extends HttpServlet {
 		// http://localhost:8081/HelloWeb/first.do
 		String uri = req.getRequestURI(); // 호스트 정보를 제외한 값을 지칭 >>> HelloWeb/first.do 
 		String context = req.getContextPath(); // 서블릿에서 context == 프로젝트 이름 (for now /HellowWeb)
-		String page = uri.substring(context.length());
+		String page = uri.substring(context.length()); // 호출한 값을 페이지로 가져오려고 하는 것
 		
 		System.out.println(page);
 		System.out.println(map.get(page));

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DAO {
-	//getconnection() => Connection 객체반환.
+	//getConnection() => Connection 객체반환.
 	
 	public static Connection getConnect() {
 		Connection conn = null;

@@ -4,6 +4,11 @@
     <jsp:include page="menu.jsp"></jsp:include>
     <jsp:include page="nav.jsp"></jsp:include>
     
+    <%
+    	String lname = (String) session.getAttribute("sesInfo"); 
+    %>
+    
+    <p> Session: <%=lname %></p>
     
 	<form action ="addMember.do">
 	<table>
