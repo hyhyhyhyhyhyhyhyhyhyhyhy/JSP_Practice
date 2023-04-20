@@ -11,7 +11,8 @@ public class NoticeVO {
 	private String noticeTitle;
 	private String noticeSubject;
 	private Date noticeDate;
-	private String noticeFile;
+	private String attachFile;
+	private int hitCount;
 	
 	
 	

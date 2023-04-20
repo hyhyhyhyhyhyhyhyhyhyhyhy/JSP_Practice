@@ -24,12 +24,14 @@ public class NoticeServiceImpl implements NoticeService{
 		return mapper.updateNotice(vo)==1;
 	}
 	@Override
-	public boolean removeNotice(int NoticeId) {
-		return mapper.deleteNotice(NoticeId) == 1;
+	public boolean removeNotice(int noticeId) {
+		return mapper.deleteNotice(noticeId) == 1;
 	}
 	@Override
-	public NoticeVO getNotice(int NoticeId) {
-		return mapper.searchNotice(NoticeId);
+	public NoticeVO getNotice(int noticeId) {
+		// 조회수 증가
+		mapper.updateCount(noticeId);
+		return mapper.searchNotice(noticeId);
 	}
 	
 	
