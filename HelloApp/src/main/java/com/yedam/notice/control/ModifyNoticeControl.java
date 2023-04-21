@@ -32,6 +32,9 @@ public class ModifyNoticeControl implements Control {
 			String title = req.getParameter("title");
 			String subject = req.getParameter("subject");
 			
+			System.out.println(nid + title + subject);
+			
+			
 			NoticeVO vo = new NoticeVO();
 			vo.setNoticeId(Integer.parseInt(nid));
 			vo.setNoticeTitle(title);

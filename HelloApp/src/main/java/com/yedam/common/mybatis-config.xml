@@ -6,10 +6,12 @@
 <properties resource="com/yedam/common/db.properties"></properties>
 <settings>
 	<setting name="mapUnderscoreToCamelCase" value="true"></setting>
+	<setting name="jdbcTypeForNull" value="NULL" /> <!-- 부적절한 열 오류 -->
 </settings>
 <typeAliases>
   <typeAlias alias="Employee" type="com.yedam.domain.Employee"></typeAlias>
   <typeAlias alias="notice" type="com.yedam.notice.domain.NoticeVO"></typeAlias>
+   <typeAlias alias="member" type="com.yedam.member.domain.MemberVO"></typeAlias>
  </typeAliases>
   <environments default="development"> <!-- DB를 처리하기 위해 JDBC로 들어가는 정보 설정 -->
     <environment id="development">
@@ -24,5 +26,6 @@
   </environments>
   <mappers>
     <mapper resource="com/yedam/notice/mapper/NoticeMapper.xml"></mapper>
+        <mapper resource="com/yedam/member/mapper/MemberMapper.xml"></mapper>
   </mappers>
 </configuration>

@@ -16,6 +16,10 @@ public interface NoticeMapper {
 	public int updateNotice(NoticeVO vo);
 	public int deleteNotice(int noticeId);
 	public NoticeVO searchNotice(int noticeId);
+	// 페이징리스트.
+	public List<NoticeVO> noticeWithPage(int page);
+	// 공지사항 총 갯수
+	public int getCount();
 	// 조회수 증가
 	public int updateCount(int noticeId);
 }

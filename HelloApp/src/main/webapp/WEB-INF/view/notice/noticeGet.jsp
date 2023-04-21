@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <h3>공지사항 상세 페이지(getNotice.jsp)</h3>
 
-<form action="modifyNotice.do" method="post"
+<form action="noticeModify.do" method="post"
 	enctype="multipart/form-data">
 	<table class="table">
 		<tr>
@@ -42,8 +42,8 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<button type="submit">수정</button>
-				<button type="button" onclick ="location.href'noticeList.do'">목록</button>
+				<button type="submit"><a href="noticeModify.do">수정</a></button>
+				<button type="button" onclick ="location.href='noticeList.do?page=${pageNum}'">목록</button>
 			</td>
 		</tr>
 	</table>

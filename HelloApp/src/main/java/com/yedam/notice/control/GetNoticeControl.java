@@ -22,10 +22,12 @@ public class GetNoticeControl implements Control {
 		// 조회된 결과값을 리턴하는 페이지로 넘김
 		
 		String nid = req.getParameter("nid");
+		String page = req.getParameter("page");
 		
 		NoticeService service = new NoticeServiceImpl();
 		NoticeVO vo = service.getNotice(Integer.parseInt(nid));
 		req.setAttribute("noticeInfo", vo);
+		req.setAttribute("pageNum", page);
 		
 		// 첨부파일이 있으면?
 		if(vo.getAttachFile() != null) {

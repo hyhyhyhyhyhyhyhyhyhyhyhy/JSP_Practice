@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.member.control.LoginControl;
+import com.yedam.member.control.LoginFormControl;
+import com.yedam.member.control.LogoutControl;
 import com.yedam.notice.control.GetNoticeControl;
 import com.yedam.notice.control.ModifyNoticeControl;
 import com.yedam.notice.control.NoticeAddForm;
@@ -35,6 +38,11 @@ public class FrontController extends HttpServlet{
 		map.put("/addNotice.do", new AddNoticeControl());
 		map.put("/getNotice.do", new GetNoticeControl());
 		map.put("/noticeModify.do", new ModifyNoticeControl());
+		
+		// 회원관련
+		map.put("/loginForm.do", new LoginFormControl());
+		map.put("/login.do", new LoginControl());
+		map.put("/logout.do", new LogoutControl());
 	}
 	
 	@Override
