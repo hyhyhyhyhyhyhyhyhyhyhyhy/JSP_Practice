@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<ul id="list"></ul>
+
+	<table border='1'>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>fname</th>
+				<th>lname</th>
+				<th>삭제</th>
+			</tr>
+		</thead>
+		<tbody id="tlist">
+
+		</tbody>
+	</table>
+	<script>
+		// json 포맷의 데이터 활용
+		// data.txt -> 홍길동 user01 010-1111-2222 (이름 / 아이디 / 연락처 일 경우,)
+		// xml -> <data><name>홍길동</name><id>user01</id><phone>010-1111-2222</phone></data> 예전에는 마크업 형태로 태그별로 값을 받아왔음
+		// document.querySelector('name').innerText << 이렇게 구현 가능
+		// {"name":"name":"홍길동", "id":"user01", "phone":"010-1111-2222"} : json 포맷 >> javascript에서 쓰기 편함
+		let json = '{"name":"홍길동", "id":"user01", "phone":"010-1111-2222"}';
+		
+		// JSON.stringify = 객체를 JSON으로 바꿔줌 (객체가 문자열로 바뀜)
+		// JSON.parse = JSON을 객체로 바꿔줌
+		
+		// json -> object 변경
+		let obj = JSON.parse(json); // json으로 인코딩된 객체를 다시 디코딩 할 수 있음. ※ JSON 객체의 모든 키(key)와 문자열 유형 값은 큰따옴표(")로 감싸야 함.
+		console.log(obj.name, obj.id, obj.phone);
+
+		let id = document.createElement('li'); // 특정한 이름의 HTML element를 생성하는데 사용, element의 이름을 매개변수로 받아서 해당 노드를 생성
+		id.innerText = obj.id;
+		document.getElementById('list').append(id);
+		// getElementById : 주어진 문자열과 일치하는 id 속성을 가진 요소를 찾아내어 이를 나타내는 element 객체를 반환, id는 문서 내 유일하기 때문에 특정 요소를 빠르게 찾을 때 유용
+		// append : 매개변수로 지정된 컨텐츠를 일치하는 요소의 끝에 삽입
+
+		let name = document.createElement('li');
+		name.innerText = obj.name;
+		document.getElementById('list').append(name);
+
+		// 비동기방식 처리 => 대표적 XMLHttpRequest, fetch 함수
+		let xhtp = new XMLHttpRequest();
+		xhtp.open('get', 'MOCK_DATA.json'); // 서버에 요청할 페이지 정보 메소드
+		xhtp.send(); // 실제 페이지 요청 호출 실행 : 서버상에 MOCK_DATA.jon를 보내는
+		xhtp.onload = function() { // on~ 은 이벤트와 관련된 속성 
+			console.log(xhtp);
+			let result = JSON.parse(xhtp.response); // json -> object
+			
+			let tlist = document.getElementById('tlist');
+			
+			for (let i = 0; i < result.length; i++) {
+				//console.log(result[i]) > 실행 시 배열 안의 모든 데이터 콘솔 출력
+				let tr = document.createElement('tr');
+				let td = document.createElement('td');
+				td.innerText = result[i].id;
+				tr.append(td); // <tr><td>...</td></tr> tr 안에다가 td를 넣겠다라는 의미
+				
+				td = document.createElement('td');
+				td.innerText = result[i].first_name;
+				tr.append(td);
+				
+				td = document.createElement('td');
+				td.innerText = result[i].last_name;
+				tr.append(td);
+				
+				// button. => <td><button>삭제</button></td> td의 아래에 삭제 버튼 라벨 삽입(태그 속성임)
+				let btn = document.createElement('button');
+				btn.addEventListener('click', function() { // onclick으로 해도 됨
+					btn.parentElement.parentElement.remove(); 
+				});
+				btn.innerText = '삭제';
+				td = document.createElement('td');
+				td.append(btn);
+				tr.append(td);
+				
+				tlist.append(tr);
+			}
+		} // 처리된 결과를 받아오면 그때 완전한 실행이 됨
+	</script>
+</body>
+</html>
