@@ -6,6 +6,15 @@
 	<select id="loginCheck" resultType="member">
 		select *
 		from members
-		where email=#{email} AND password=#{password}
+		where
+		email=#{email} AND password=#{password}
+	</select>
+
+	<select id="memberByDept" resultType="map">
+		select d.department_name, count(*) as cnt
+		from hr.employees e
+		join hr.departments d
+		on e.department_id = d.department_id
+		group by d.department_name
 	</select>
 </mapper>

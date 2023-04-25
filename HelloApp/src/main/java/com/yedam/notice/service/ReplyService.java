@@ -7,4 +7,6 @@ import com.yedam.notice.domain.ReplyVO;
 public interface ReplyService {
 	public List<ReplyVO> getReplies(int noticeId);
 	public boolean addReply(ReplyVO vo);
+	public boolean updateReply(ReplyVO vo);
+	public ReplyVO searchReply(int replyId);
 }

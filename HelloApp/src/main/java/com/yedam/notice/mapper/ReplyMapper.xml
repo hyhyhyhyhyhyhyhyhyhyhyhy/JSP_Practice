@@ -4,19 +4,31 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.notice.mapper.ReplyMapper">
 	<select id="replyList" parameterType="int" resultType="reply">
-		select * from tbl_reply
+		select *
+		from tbl_reply
 		where notice_id=#{noticeId}
-		order by 1 
+		order by 1
 	</select>
 	<insert id="insertReply" parameterType="reply">
-	<selectKey keyProperty="replyId" resultType="int" order="BEFORE">
-		select reply_seq.nextval from dual
-	</selectKey>
-		insert into tbl_reply (reply_id, reply, reply_writer, reply_date, notice_id)
-		values (reply_seq.nextval, #{reply}, #{replyWriter}, sysdate, #{noticeId})
+		<selectKey keyProperty="replyId" resultType="int"
+			order="BEFORE">
+			select reply_seq.nextval from dual
+		</selectKey>
+		insert into tbl_reply (reply_id, reply, reply_writer, reply_date,
+		notice_id)
+		values (reply_seq.nextval, #{reply}, #{replyWriter},
+		sysdate, #{noticeId})
 	</insert>
-	
-	
+	<!-- 댓글 수정 -->
+	<update id="updateReply" parameterType="reply">
+		update tbl_reply
+		set reply=#{reply}
+		where reply_id=#{replyId}
+	</update>
+	<select id="searchReply" parameterType="int">
+		select * from tbl_reply
+		where reply_id = #{replyId}
+	</select>
 
 
 </mapper>

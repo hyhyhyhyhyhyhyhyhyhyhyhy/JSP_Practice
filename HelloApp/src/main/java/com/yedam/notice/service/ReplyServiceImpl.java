@@ -21,6 +21,16 @@ public class ReplyServiceImpl implements ReplyService{
 	public boolean addReply(ReplyVO vo) {
 		return mapper.insertReply(vo)==1;
 	}
+
+	@Override
+	public boolean updateReply(ReplyVO vo) {
+		return mapper.updateReply(vo)==1;
+	}
+
+	@Override
+	public ReplyVO searchReply(int replyId) {
+		return mapper.searchReply(replyId);
+	}
 	
 	
 	
