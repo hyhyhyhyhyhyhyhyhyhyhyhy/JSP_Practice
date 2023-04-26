@@ -32,5 +32,6 @@
 		<mapper resource="com/yedam/notice/mapper/NoticeMapper.xml"></mapper>
 		<mapper resource="com/yedam/member/mapper/MemberMapper.xml"></mapper>
 		<mapper resource="com/yedam/notice/mapper/ReplyMapper.xml"></mapper>
+		<mapper resource="com/yedam/member/mapper/EventyMapper.xml"></mapper>
 	</mappers>
 </configuration>

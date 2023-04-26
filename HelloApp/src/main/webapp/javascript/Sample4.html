@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>Sample4.html</p>
+	<ul id="list">
+		<li>1, kildong,Hong, 2334</li>
+	</ul>
+	<script>
+		let xht = new XMLHttpRequest();
+		xht.open('get', 'MOCK_DATA.json');
+		xht.send();
+		xht.onload = function() {
+			console.log(JSON.parse(xht.response));
+		}
+		
+		
+		// 메소드 진행방식이 chain 처럼 진행되는데 방식이 편함
+		fetch('MOCK_DATA.json')
+		.then(function(resolve){ // fetch에서 넘어오는 함수의 결과값이 resolve, 또한 함수의 매개값으로 결과 값이 들어온다.
+			console.log('success'); // 페이지가 없는 것도, 네트워크가 안될 때도 성공으로 처리 >> 이럴 때만 오류메세지 잘 확인해주면 됨
+			return resolve.text();
+		}, function(){
+			console.log('error');
+		}) // 성공하면 첫 번째, 실패하면 두 번째 함수 실행
+		.then(function(){
+			console.log('success', result);
+		}, function(error){
+			console.log('error', error);
+		})
+		
+		fetch('MOCK_DATA.json')
+		.then(resolve => resolve.json()) // 간단한 코드 작성 시 function 과 return을 생략할 수 있다. (중괄호 생략은 매개변수가 하나일 경우!)
+		.then(result => {
+			console.log(result);
+			for(int i=0; i<result.length; i++){
+				// 코드 작성;
+				
+			}	
+		})
+		.catch(error => {console.log(error);}) // fetch든 then이든 어디서 오류가 나든 catch에서 예외 처리 해줌
+	</script>
+</body>
+</html>
