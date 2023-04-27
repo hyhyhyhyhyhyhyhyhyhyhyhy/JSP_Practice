@@ -10,7 +10,7 @@
 		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
 	</definition>
 
-	<definition name="WILDCARD:*/*" extends="Myproject">
+	<definition name="WILDCARD:prod/*" extends="Myproject">
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
 	</definition>
 	
