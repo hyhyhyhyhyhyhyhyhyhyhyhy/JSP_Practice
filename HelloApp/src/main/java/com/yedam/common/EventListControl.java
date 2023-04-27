@@ -15,8 +15,8 @@ public class EventListControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 이벤트 목록의 결과 값을 반환하는? 메소드?
-		String json = "[{\"title\":\"test\", \"startDate\":\"2023-04-05\", \"endDate\":\"2023-04-09\"}]"
-			List<EventVO> event = new ArrayList<>();
+		String json = "[{\"title\":\"test\", \"startDate\":\"2023-04-05\", \"endDate\":\"2023-04-09\"}]";
+			List<EventVO> list = new ArrayList<>();
 			
 				
 		return json + ".json";
