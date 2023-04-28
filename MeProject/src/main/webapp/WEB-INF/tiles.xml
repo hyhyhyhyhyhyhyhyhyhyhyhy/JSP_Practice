@@ -3,6 +3,7 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+
 	<definition name="Myproject" template="/WEB-INF/layout/template.jsp">
 		<put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
 		<put-attribute name="nav" value="/WEB-INF/layout/nav.jsp" />
@@ -11,7 +12,7 @@
 	</definition>
 
 	<definition name="WILDCARD:prod/*" extends="Myproject">
-		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/prod/{1}.jsp"></put-attribute>
 	</definition>
 	
 </tiles-definitions>
